@@ -1,15 +1,11 @@
+module DayTwo (partOne, partTwo) where
+
 import Data.Maybe (mapMaybe)
-import System.IO (IOMode (..), hGetContents, openFile)
+import Solution
 
 data Movement = Forward Int | Down Int | Up Int
 
 data Position = Position Int Int Int
-
-readInput :: String -> IO [Movement]
-readInput fileName = do
-  handle <- openFile fileName ReadMode
-  contents <- hGetContents handle
-  pure $ mapMaybe (parseMovement . words) (lines contents)
 
 parseMovement :: [String] -> Maybe Movement
 parseMovement ("forward" : n : _) = Just . Forward $ read n
@@ -31,12 +27,11 @@ adjustPositionB (Position horizontal depth aim) movement =
     Down n -> Position horizontal depth (aim + n)
     Up n -> Position horizontal depth (aim - n)
 
-main :: IO ()
-main = do
-  movements <- readInput "input.txt"
+finalDepth :: Position -> Int
+finalDepth (Position h d _) = h * d
 
-  let (Position horizontal depth _) = foldl adjustPositionA (Position 0 0 0) movements
-  putStrLn $ "Puzzle 1: " ++ show (horizontal * depth)
+partOne :: Solution
+partOne = finalDepth . foldl adjustPositionA (Position 0 0 0) . mapMaybe (parseMovement . words)
 
-  let (Position horizontal depth _) = foldl adjustPositionB (Position 0 0 0) movements
-  putStrLn $ "Puzzle 2: " ++ show (horizontal * depth)
+partTwo :: Solution
+partTwo = finalDepth . foldl adjustPositionB (Position 0 0 0) . mapMaybe (parseMovement . words)
