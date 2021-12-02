@@ -10,10 +10,9 @@ numOfIncreases :: [Integer] -> Int
 numOfIncreases a = length . filter (\(a, b) -> b > a) $ zip a (drop 1 a)
 
 slidingWindow :: Int -> [a] -> [[a]]
-slidingWindow i xs =
-  if length xs < i
-    then []
-    else take i xs : slidingWindow i (tail xs)
+slidingWindow i xs
+  | length xs < i = []
+  | otherwise     = take i xs : slidingWindow i (tail xs)
 
 main :: IO ()
 main = do
