@@ -13,8 +13,12 @@ jobs:
       - name: Cache Stack Dependencies
         uses: actions/cache@v1
         with:
-          path: ~/.stack
-          key: ${{ runner.os }}-store-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('aoc2021.cabal') }}
+          path: |
+            ~/.stack
+            .stack-work
+          key: ${{ runner.os }}-stack-${{ hashFiles('stack.yaml.lock', 'package.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-stack
 
       - name: Build
         run: stack build
