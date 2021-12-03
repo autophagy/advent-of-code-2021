@@ -1,4 +1,4 @@
-module DayThree (partOne, partTwo) where
+module Day3 (partOne, partTwo) where
 
 import Solution
 import Data.Char (digitToInt)
