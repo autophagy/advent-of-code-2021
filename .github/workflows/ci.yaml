@@ -1,0 +1,24 @@
+name: Continuous Integration
+on:
+  push:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Stack Dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.stack
+          key: ${{ runner.os }}-store-${{ hashFiles('stack.yaml.lock') }}-${{ hashFiles('aoc2021.cabal') }}
+
+      - name: Build
+        run: stack build
+
+      - name: Test
+        run: stack test
+
