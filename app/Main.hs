@@ -6,11 +6,13 @@ import System.Exit (exitFailure)
 
 import qualified DayOne
 import qualified DayTwo
+import qualified DayThree
 import Solution
 
 getSolution :: String -> Maybe (Solution, Solution, FilePath)
 getSolution "1" = Just (DayOne.partOne, DayOne.partTwo, "data/day1.txt")
 getSolution "2" = Just (DayTwo.partOne, DayTwo.partTwo, "data/day2.txt")
+getSolution "3" = Just (DayThree.partOne, DayThree.partTwo, "data/day3.txt")
 getSolution _ = Nothing
 
 readInput :: FilePath -> IO [String]
