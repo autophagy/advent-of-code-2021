@@ -17,14 +17,15 @@ splitOn c s = case dropWhile (== c) s of
 appendToLast :: [[a]] -> a -> [[a]]
 appendToLast xs x = init xs ++ [last xs ++ [x]]
 
--- | Group a set of strings by the empty string, dropping the empty string.
-splitwhenEmpty :: [String] -> [[String]]
-splitwhenEmpty s = splitwhenEmpty_ s [[]]
+-- | Group a set of a by an element, dropping that element.
+splitListBy :: Eq a => a -> [a] -> [[a]]
+splitListBy a s = splitListBy_ a s [[]]
 
-splitwhenEmpty_ :: [String] -> [[String]] -> [[String]]
-splitwhenEmpty_ [] p = p
-splitwhenEmpty_ ("" : xs) p = splitwhenEmpty_ xs (p ++ [[]])
-splitwhenEmpty_ (x : xs) p = splitwhenEmpty_ xs (appendToLast p x)
+splitListBy_ :: Eq a => a -> [a] -> [[a]] -> [[a]]
+splitListBy_ _ [] p = p
+splitListBy_ a (x : xs) p
+  | x == a = splitListBy_ a xs (p ++ [[]])
+  | otherwise = splitListBy_ a xs (appendToLast p x)
 
 contains :: Ord a => [a] -> [a] -> Bool
 contains a b = intersect b a == b
@@ -36,7 +37,7 @@ readBoard = map (map read . words)
 readInput :: [String] -> ([Int], [BingoBoard])
 readInput s = (numbersToCall, boards)
   where
-    s' = splitwhenEmpty s
+    s' = splitListBy "" s
     numbersToCall = map read . splitOn ',' . head $ head s'
     boards = map readBoard (tail s')
 
