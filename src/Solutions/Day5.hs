@@ -4,7 +4,7 @@ import Common (reversableRange, splitOn)
 import Data.List (group, sort)
 import Solution
 
-data Coordinate = Coordinate {getX :: Int, getY :: Int} deriving (Eq, Show, Ord)
+data Coordinate = Coordinate Int Int deriving (Eq, Show, Ord)
 
 type Line = [Coordinate]
 
