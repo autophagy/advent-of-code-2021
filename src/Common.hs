@@ -5,7 +5,7 @@ module Common
     appendToLast,
     splitListBy,
     contains,
-    reversableRange,
+    (...),
   )
 where
 
@@ -48,5 +48,9 @@ splitListBy_ a (x : xs) p
 contains :: Ord a => [a] -> [a] -> Bool
 contains a b = intersect b a == b
 
-reversableRange :: Num a => Enum a => a -> a -> [a]
-reversableRange a b = [a, a + signum (b - a)..b]
+-- | Create a range from a to b and automatically deduce direction.
+-- Similar to [a..b], except it works if a > b.
+(...) :: Eq a => Num a => Enum a => a -> a -> [a]
+a ... b
+  | a == b = [a]
+  | otherwise = [a, a + signum (b - a)..b]
