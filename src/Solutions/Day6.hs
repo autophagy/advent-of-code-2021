@@ -1,6 +1,7 @@
 module Solutions.Day6 (partOne, partTwo) where
 
 import Common (splitOn)
+import Control.Arrow ((&&&))
 import Data.List
 import qualified Data.Map as M
 import Solution
@@ -16,7 +17,7 @@ iterateFish (0, n) = [(6, n), (8, n)]
 iterateFish (daysRemaining, n) = [(daysRemaining -1, n)]
 
 groupFish :: [Int] -> M.Map Int Int
-groupFish = M.fromList . map (\x -> (head x, length x)) . group . sort
+groupFish = M.fromList . map (head &&& length) . group . sort
 
 runEvolution :: Int -> [String] -> Int
 runEvolution days = sum . M.elems . last . take totalDays . iterate evolve . groupFish . parseInput . head
