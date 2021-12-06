@@ -5,19 +5,17 @@ import Data.List
 import qualified Data.Map as M
 import Solution
 
-type Lanternfish = Int
-
-parseInput :: String -> [Lanternfish]
+parseInput :: String -> [Int]
 parseInput = map read . splitOn ','
 
-evolve :: M.Map Lanternfish Int -> M.Map Lanternfish Int
+evolve :: M.Map Int Int -> M.Map Int Int
 evolve = M.fromAscListWith (+) . sort . concatMap iterateFish . M.assocs
 
-iterateFish :: (Lanternfish, Int) -> [(Lanternfish, Int)]
+iterateFish :: (Int, Int) -> [(Int, Int)]
 iterateFish (0, n) = [(6, n), (8, n)]
-iterateFish (f, n) = [(f -1, n)]
+iterateFish (daysRemaining, n) = [(daysRemaining -1, n)]
 
-groupFish :: [Lanternfish] -> M.Map Lanternfish Int
+groupFish :: [Int] -> M.Map Int Int
 groupFish = M.fromList . map (\x -> (head x, length x)) . group . sort
 
 runEvolution :: Int -> [String] -> Int
