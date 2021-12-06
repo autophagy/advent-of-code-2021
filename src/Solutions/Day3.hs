@@ -1,7 +1,6 @@
 module Solutions.Day3 (partOne, partTwo) where
 
 import Common (binaryToDecimal)
-import Data.Bool (bool)
 import Data.Char (digitToInt)
 import Data.Foldable (foldl')
 import Solution
@@ -22,15 +21,15 @@ lifeSupportRating binary op soFar = lifeSupportRating binary' op soFar'
     binary' = map tail $ filter ((==) (fromEnum k) . head) binary
 
 partOne :: Solution
-partOne lines = gamma * epsilon
+partOne l = gamma * epsilon
   where
-    binary = map (map digitToInt) lines
+    binary = map (map digitToInt) l
     gamma = binaryToDecimal $ diagnostic binary (>=)
     epsilon = binaryToDecimal $ diagnostic binary (<)
 
 partTwo :: Solution
-partTwo lines = o2 * co2
+partTwo l = o2 * co2
   where
-    bin = map (map digitToInt) lines
+    bin = map (map digitToInt) l
     o2 = binaryToDecimal $ lifeSupportRating bin (<=) []
     co2 = binaryToDecimal $ lifeSupportRating bin (>) []

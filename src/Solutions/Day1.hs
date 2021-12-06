@@ -4,7 +4,7 @@ import Common (slidingWindow)
 import Solution
 
 numOfIncreases :: [Integer] -> Int
-numOfIncreases a = length . filter (\(a, b) -> b > a) $ zip a (drop 1 a)
+numOfIncreases list = length . filter (\(a, b) -> b > a) $ zip list (drop 1 list)
 
 partOne :: Solution
 partOne = numOfIncreases . map read

@@ -11,34 +11,34 @@ import qualified Solutions.Day6 as Day6
 main :: IO ()
 main = hspec $ do
     describe "Day one" $ do
-        let lines = ["199", "200", "208", "210", "200", "207", "240", "269", "260", "263"]
+        let input = ["199", "200", "208", "210", "200", "207", "240", "269", "260", "263"]
 
         it "returns the correct result for the part 1's example" $ do
-            Day1.partOne lines `shouldBe` 7
+            Day1.partOne input `shouldBe` 7
 
         it "returns the correct result for part 2's example" $ do
-            Day1.partTwo lines `shouldBe` 5
+            Day1.partTwo input `shouldBe` 5
 
     describe "Day two" $ do
-        let lines = [ "forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2" ]
+        let input = [ "forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2" ]
 
         it "returns the correct result for the part 1's example" $ do
-            Day2.partOne lines `shouldBe` 150
+            Day2.partOne input `shouldBe` 150
 
         it "returns the correct result for part 2's example" $ do
-            Day2.partTwo lines `shouldBe` 900
+            Day2.partTwo input `shouldBe` 900
 
     describe "Day three" $ do
-        let lines = ["00100", "11110", "10110", "10111", "10101", "01111", "00111", "11100", "10000", "11001", "00010", "01010"]
+        let input = ["00100", "11110", "10110", "10111", "10101", "01111", "00111", "11100", "10000", "11001", "00010", "01010"]
 
         it "returns the correct result for the part 1's example" $ do
-            Day3.partOne lines `shouldBe` 198
+            Day3.partOne input `shouldBe` 198
 
         it "returns the correct result for part 2's example" $ do
-            Day3.partTwo lines `shouldBe` 230
+            Day3.partTwo input `shouldBe` 230
 
     describe "Day four" $ do
-        let lines = [ "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1"
+        let input = [ "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1"
                     , ""
                     , "22 13 17 11  0"
                     , " 8  2 23  4 24"
@@ -60,13 +60,13 @@ main = hspec $ do
 
 
         it "returns the correct result for the part 1's example" $ do
-            Day4.partOne lines `shouldBe` 4512
+            Day4.partOne input `shouldBe` 4512
 
         it "returns the correct result for part 2's example" $ do
-            Day4.partTwo lines `shouldBe` 1924
+            Day4.partTwo input `shouldBe` 1924
 
     describe "Day five" $ do
-        let lines = [ "0,9 -> 5,9"
+        let input = [ "0,9 -> 5,9"
                     , "8,0 -> 0,8"
                     , "9,4 -> 3,4"
                     , "2,2 -> 2,1"
@@ -78,16 +78,16 @@ main = hspec $ do
                     , "5,5 -> 8,2" ]
 
         it "returns the correct result for part 1's example" $ do
-            Day5.partOne lines `shouldBe` 5
+            Day5.partOne input `shouldBe` 5
 
         it "returns the correct result for part 2's example" $ do
-            Day5.partTwo lines `shouldBe` 12
+            Day5.partTwo input `shouldBe` 12
 
     describe "Day six" $ do
-        let lines = ["3,4,3,1,2"]
+        let input = ["3,4,3,1,2"]
 
         it "returns the correct result for part 1's example" $ do
-            Day6.partOne lines `shouldBe` 5934
+            Day6.partOne input `shouldBe` 5934
 
         it "returns the correct result for part 2's example" $ do
-            Day6.partTwo lines `shouldBe` 26984457539
+            Day6.partTwo input `shouldBe` 26984457539
