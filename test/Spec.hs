@@ -4,7 +4,7 @@ import qualified Solutions.Day1 as Day1
 import qualified Solutions.Day2 as Day2
 import qualified Solutions.Day3 as Day3
 import qualified Solutions.Day4 as Day4
-
+import qualified Solutions.Day5 as Day5
 
 day4part1Input :: [String]
 day4part1Input =
@@ -64,3 +64,21 @@ main = hspec $ do
 
         it "returns the correct result for part 2's example" $ do
             Day4.partTwo day4part1Input `shouldBe` 1924
+
+    describe "Day five" $ do
+        let lines = [ "0,9 -> 5,9"
+                    , "8,0 -> 0,8"
+                    , "9,4 -> 3,4"
+                    , "2,2 -> 2,1"
+                    , "7,0 -> 7,4"
+                    , "6,4 -> 2,0"
+                    , "0,9 -> 2,9"
+                    , "3,4 -> 1,4"
+                    , "0,0 -> 8,8"
+                    , "5,5 -> 8,2" ]
+
+        it "returns the correct result for part 1's example" $ do
+            Day5.partOne lines `shouldBe` 5
+
+        it "returns the correct result for part 2's example" $ do
+            Day5.partTwo lines `shouldBe` 12

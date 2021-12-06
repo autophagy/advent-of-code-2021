@@ -5,6 +5,7 @@ module Common
     appendToLast,
     splitListBy,
     contains,
+    reversableRange,
   )
 where
 
@@ -46,3 +47,6 @@ splitListBy_ a (x : xs) p
 -- | Determine whether b contains all elements of a
 contains :: Ord a => [a] -> [a] -> Bool
 contains a b = intersect b a == b
+
+reversableRange :: Num a => Enum a => a -> a -> [a]
+reversableRange a b = [a, a + signum (b - a)..b]
