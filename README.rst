@@ -2,8 +2,8 @@ Advent of Code 2021
 ===================
 
 Hello! Here are my `Advent of Code 2021 <https://adventofcode.com/2021>`_
-solutions. Written in Haskell, trying not to use many external libraries, as
-some much needed FP practice.
+solutions. Written in Haskell, trying not to use any external libraries (except
+hspec for testing) as some much needed FP practice.
 
 Building/testing relies on
 `Stack <https://docs.haskellstack.org/en/stable/README/>`_. A nix shell with
