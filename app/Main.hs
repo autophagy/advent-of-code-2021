@@ -1,35 +1,34 @@
 module Main where
 
-import System.IO (IOMode (..), hGetContents, openFile, stderr, hPutStrLn)
+import Solution
+import qualified Solutions.Day1 as Day1
+import qualified Solutions.Day10 as Day10
+import qualified Solutions.Day11 as Day11
+import qualified Solutions.Day12 as Day12
+import qualified Solutions.Day13 as Day13
+import qualified Solutions.Day14 as Day14
+import qualified Solutions.Day15 as Day15
+import qualified Solutions.Day16 as Day16
+import qualified Solutions.Day17 as Day17
+import qualified Solutions.Day18 as Day18
+import qualified Solutions.Day19 as Day19
+import qualified Solutions.Day2 as Day2
+import qualified Solutions.Day20 as Day20
+import qualified Solutions.Day21 as Day21
+import qualified Solutions.Day22 as Day22
+import qualified Solutions.Day23 as Day23
+import qualified Solutions.Day24 as Day24
+import qualified Solutions.Day25 as Day25
+import qualified Solutions.Day3 as Day3
+import qualified Solutions.Day4 as Day4
+import qualified Solutions.Day5 as Day5
+import qualified Solutions.Day6 as Day6
+import qualified Solutions.Day7 as Day7
+import qualified Solutions.Day8 as Day8
+import qualified Solutions.Day9 as Day9
 import System.Environment (getArgs)
 import System.Exit (exitFailure)
-
-import Solution
-import qualified Day1
-import qualified Day2
-import qualified Day3
-import qualified Day4
-import qualified Day5
-import qualified Day6
-import qualified Day7
-import qualified Day8
-import qualified Day9
-import qualified Day10
-import qualified Day11
-import qualified Day12
-import qualified Day13
-import qualified Day14
-import qualified Day15
-import qualified Day16
-import qualified Day17
-import qualified Day18
-import qualified Day19
-import qualified Day20
-import qualified Day21
-import qualified Day22
-import qualified Day23
-import qualified Day24
-import qualified Day25
+import System.IO (IOMode (..), hGetContents, hPutStrLn, openFile, stderr)
 
 getSolution :: String -> Maybe (Solution, Solution, FilePath)
 getSolution "1" = Just (Day1.partOne, Day1.partTwo, "data/day1.txt")
@@ -61,23 +60,22 @@ getSolution _ = Nothing
 
 readInput :: FilePath -> IO [String]
 readInput filename = do
-    handle <- openFile filename ReadMode
-    contents <- hGetContents handle
-    pure $ lines contents
-
+  handle <- openFile filename ReadMode
+  contents <- hGetContents handle
+  pure $ lines contents
 
 main :: IO ()
 main = do
-    args <- getArgs
-    case args of
-      [ day ] ->
-          case getSolution day of
-            Just (partOne, partTwo, fp) -> do
-              input <- readInput fp
-              putStrLn $ "Day " ++ day ++ " solution:"
-              putStrLn $ "Puzzle 1: " ++ show (partOne input)
-              putStrLn $ "Puzzle 2: " ++ show (partTwo input)
-            Nothing -> hPutStrLn stderr $ "No solution found for day " ++ day
-      _ -> do
-          hPutStrLn stderr "usage: <integer>"
-          exitFailure
+  args <- getArgs
+  case args of
+    [day] ->
+      case getSolution day of
+        Just (partOne, partTwo, fp) -> do
+          input <- readInput fp
+          putStrLn $ "Day " ++ day ++ " solution:"
+          putStrLn $ "Puzzle 1: " ++ show (partOne input)
+          putStrLn $ "Puzzle 2: " ++ show (partTwo input)
+        Nothing -> hPutStrLn stderr $ "No solution found for day " ++ day
+    _ -> do
+      hPutStrLn stderr "usage: <integer>"
+      exitFailure

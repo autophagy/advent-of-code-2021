@@ -24,32 +24,33 @@ source-repository head
 
 library
   exposed-modules:
-      Day1
-      Day10
-      Day11
-      Day12
-      Day13
-      Day14
-      Day15
-      Day16
-      Day17
-      Day18
-      Day19
-      Day2
-      Day20
-      Day21
-      Day22
-      Day23
-      Day24
-      Day25
-      Day3
-      Day4
-      Day5
-      Day6
-      Day7
-      Day8
-      Day9
+      Common
       Solution
+      Solutions.Day1
+      Solutions.Day10
+      Solutions.Day11
+      Solutions.Day12
+      Solutions.Day13
+      Solutions.Day14
+      Solutions.Day15
+      Solutions.Day16
+      Solutions.Day17
+      Solutions.Day18
+      Solutions.Day19
+      Solutions.Day2
+      Solutions.Day20
+      Solutions.Day21
+      Solutions.Day22
+      Solutions.Day23
+      Solutions.Day24
+      Solutions.Day25
+      Solutions.Day3
+      Solutions.Day4
+      Solutions.Day5
+      Solutions.Day6
+      Solutions.Day7
+      Solutions.Day8
+      Solutions.Day9
   other-modules:
       Paths_aoc2021
   hs-source-dirs:

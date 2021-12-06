@@ -1,4 +1,4 @@
-module Day2 (partOne, partTwo) where
+module Solutions.Day2 (partOne, partTwo) where
 
 import Data.Maybe (mapMaybe)
 import Solution

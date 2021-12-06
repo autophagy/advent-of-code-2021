@@ -1,34 +1,10 @@
-module Day4 (partOne, partTwo) where
+module Solutions.Day4 (partOne, partTwo) where
 
-import Data.List
+import Common (contains, splitListBy, splitOn)
+import Data.List (transpose, (\\))
 import Solution
 
 type BingoBoard = [[Int]]
-
--- | Split a string by a delimiter character, dropping the delimiter.
-splitOn :: Char -> String -> [String]
-splitOn c s = case dropWhile (== c) s of
-  "" -> []
-  s' -> w : splitOn c s''
-    where
-      (w, s'') = break (== c) s'
-
--- | Append an element to the last member of a list of lists.
-appendToLast :: [[a]] -> a -> [[a]]
-appendToLast xs x = init xs ++ [last xs ++ [x]]
-
--- | Group a set of a by an element, dropping that element.
-splitListBy :: Eq a => a -> [a] -> [[a]]
-splitListBy a s = splitListBy_ a s [[]]
-
-splitListBy_ :: Eq a => a -> [a] -> [[a]] -> [[a]]
-splitListBy_ _ [] p = p
-splitListBy_ a (x : xs) p
-  | x == a = splitListBy_ a xs (p ++ [[]])
-  | otherwise = splitListBy_ a xs (appendToLast p x)
-
-contains :: Ord a => [a] -> [a] -> Bool
-contains a b = intersect b a == b
 
 -- | Input parsing functions
 readBoard :: [String] -> BingoBoard

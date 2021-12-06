@@ -1,4 +1,4 @@
-module Day23 (partOne, partTwo) where
+module Solutions.Day20 (partOne, partTwo) where
 
 import Solution
 

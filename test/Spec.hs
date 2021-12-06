@@ -1,9 +1,9 @@
 import Test.Hspec
 
-import qualified Day1
-import qualified Day2
-import qualified Day3
-import qualified Day4
+import qualified Solutions.Day1 as Day1
+import qualified Solutions.Day2 as Day2
+import qualified Solutions.Day3 as Day3
+import qualified Solutions.Day4 as Day4
 
 
 day4part1Input :: [String]
