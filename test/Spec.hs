@@ -6,6 +6,7 @@ import qualified Solutions.Day3 as Day3
 import qualified Solutions.Day4 as Day4
 import qualified Solutions.Day5 as Day5
 import qualified Solutions.Day6 as Day6
+import qualified Solutions.Day7 as Day7
 
 
 main :: IO ()
@@ -91,3 +92,12 @@ main = hspec $ do
 
         it "returns the correct result for part 2's example" $ do
             Day6.partTwo input `shouldBe` 26984457539
+
+    describe "Day seven" $ do
+        let input = ["16,1,2,0,4,2,7,1,2,14"]
+
+        it "returns the correct result for part 1's example" $ do
+            Day7.partOne input `shouldBe` 37
+
+        it "returns the correct result for part 2's example" $ do
+            Day7.partTwo input `shouldBe` 168

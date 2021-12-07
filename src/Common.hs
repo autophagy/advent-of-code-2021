@@ -6,6 +6,8 @@ module Common
     splitListBy,
     contains,
     (...),
+    nthTriangle,
+    fullRange,
   )
 where
 
@@ -53,4 +55,12 @@ contains a b = intersect b a == b
 (...) :: Eq a => Num a => Enum a => a -> a -> [a]
 a ... b
   | a == b = [a]
-  | otherwise = [a, a + signum (b - a)..b]
+  | otherwise = [a, a + signum (b - a) .. b]
+
+-- | Calculate the triangular number for n. 1 + 2 + 3 + ... + (n-1) + n
+nthTriangle :: Int -> Int
+nthTriangle n = div (n * n + n) 2
+
+-- | Given a list of elements, return the full list between its upper and lower bounds
+fullRange :: (Enum a, Ord a) => [a] -> [a]
+fullRange a = [minimum a .. maximum a]
