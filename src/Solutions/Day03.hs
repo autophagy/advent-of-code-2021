@@ -1,4 +1,4 @@
-module Solutions.Day3 (partOne, partTwo) where
+module Solutions.Day03 (solution) where
 
 import Common (binaryToDecimal)
 import Data.Char (digitToInt)
@@ -20,16 +20,22 @@ lifeSupportRating binary op soFar = lifeSupportRating binary' op soFar'
     soFar' = soFar ++ [k]
     binary' = map tail $ filter ((==) (fromEnum k) . head) binary
 
-partOne :: Solution
-partOne l = gamma * epsilon
+partOne :: [[Int]] -> Int
+partOne binary = gamma * epsilon
   where
-    binary = map (map digitToInt) l
     gamma = binaryToDecimal $ diagnostic binary (>=)
     epsilon = binaryToDecimal $ diagnostic binary (<)
 
-partTwo :: Solution
-partTwo l = o2 * co2
+partTwo :: [[Int]] -> Int
+partTwo binary = o2 * co2
   where
-    bin = map (map digitToInt) l
-    o2 = binaryToDecimal $ lifeSupportRating bin (<=) []
-    co2 = binaryToDecimal $ lifeSupportRating bin (>) []
+    o2 = binaryToDecimal $ lifeSupportRating binary (<=) []
+    co2 = binaryToDecimal $ lifeSupportRating binary (>) []
+
+solution :: Solution [[Int]]
+solution =
+  MkSol
+    { mkParse = map (map digitToInt),
+      mkPartOne = partOne,
+      mkPartTwo = partTwo
+    }

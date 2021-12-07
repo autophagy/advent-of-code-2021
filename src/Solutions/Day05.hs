@@ -1,6 +1,6 @@
-module Solutions.Day5 (partOne, partTwo) where
+module Solutions.Day05 (solution) where
 
-import Common ((...), splitOn, absDifference)
+import Common (absDifference, splitOn, (...))
 import Data.List (group, sort)
 import Solution
 
@@ -12,16 +12,16 @@ type Line = [Coordinate]
 -- empty list otherwise.
 createLine :: Coordinate -> Coordinate -> Line
 createLine (Coordinate x1 y1) (Coordinate x2 y2)
-  | x1 == x2 = map (Coordinate x1) $ y1...y2
-  | y1 == y2 = map (`Coordinate` y1) $ x1...x2
+  | x1 == x2 = map (Coordinate x1) $ y1 ... y2
+  | y1 == y2 = map (`Coordinate` y1) $ x1 ... x2
   | otherwise = []
 
 -- | As above, but also take into account diagonal lines.
 createLineDiag :: Coordinate -> Coordinate -> Line
 createLineDiag (Coordinate x1 y1) (Coordinate x2 y2)
-  | x1 == x2 = map (Coordinate x1) $ y1...y2
-  | y1 == y2 = map (`Coordinate` y1) $ x1...x2
-  | absDifference x1 x2 == absDifference y1 y2 = zipWith Coordinate (x1...x2) (y1...y2)
+  | x1 == x2 = map (Coordinate x1) $ y1 ... y2
+  | y1 == y2 = map (`Coordinate` y1) $ x1 ... x2
+  | absDifference x1 x2 == absDifference y1 y2 = zipWith Coordinate (x1 ... x2) (y1 ... y2)
   | otherwise = []
 
 parseInput :: [String] -> [(Coordinate, Coordinate)]
@@ -37,8 +37,10 @@ parseCoordinate s = Coordinate x y
     x = read $ head splitS
     y = read $ last splitS
 
-partOne :: Solution
-partOne = length . filter (>= 2) . map length . group . sort . concatMap (uncurry createLine) . parseInput
-
-partTwo :: Solution
-partTwo = length . filter (>= 2) . map length . group . sort . concatMap (uncurry createLineDiag) . parseInput
+solution :: Solution [(Coordinate, Coordinate)]
+solution =
+  MkSol
+    { mkParse = parseInput,
+      mkPartOne = length . filter (>= 2) . map length . group . sort . concatMap (uncurry createLine),
+      mkPartTwo = length . filter (>= 2) . map length . group . sort . concatMap (uncurry createLineDiag)
+    }

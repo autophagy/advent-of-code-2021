@@ -1,4 +1,4 @@
-module Solutions.Day6 (partOne, partTwo) where
+module Solutions.Day06 (solution) where
 
 import Common (splitOn)
 import Control.Arrow ((&&&))
@@ -19,13 +19,15 @@ iterateFish (daysRemaining, n) = [(daysRemaining -1, n)]
 groupFish :: [Int] -> M.Map Int Int
 groupFish = M.fromList . map (head &&& length) . group . sort
 
-runEvolution :: Int -> [String] -> Int
-runEvolution days = sum . M.elems . last . take totalDays . iterate evolve . groupFish . parseInput . head
+runEvolution :: Int -> M.Map Int Int -> Int
+runEvolution days = sum . M.elems . last . take totalDays . iterate evolve
   where
     totalDays = days + 1
 
-partOne :: Solution
-partOne = runEvolution 80
-
-partTwo :: Solution
-partTwo = runEvolution 256
+solution :: Solution (M.Map Int Int)
+solution =
+  MkSol
+    { mkParse = groupFish . parseInput . head,
+      mkPartOne = runEvolution 80,
+      mkPartTwo = runEvolution 256
+    }

@@ -1,6 +1,6 @@
-module Solutions.Day7 (partOne, partTwo) where
+module Solutions.Day07 (solution) where
 
-import Common (fullRange, nthTriangle, splitOn, absDifference)
+import Common (absDifference, fullRange, nthTriangle, splitOn)
 import Solution
 
 parseInput :: String -> [Int]
@@ -15,8 +15,10 @@ fuelCosts l = map (\i -> sum $ map (absDifference i) l) $ fullRange l
 expensiveFuelCosts :: [Int] -> [Int]
 expensiveFuelCosts l = map (\i -> sum $ map (nthTriangle . absDifference i) l) $ fullRange l
 
-partOne :: Solution
-partOne = minimum . fuelCosts . parseInput . head
-
-partTwo :: Solution
-partTwo = minimum . expensiveFuelCosts . parseInput . head
+solution :: Solution [Int]
+solution =
+  MkSol
+    { mkParse = parseInput . head,
+      mkPartOne = minimum . fuelCosts,
+      mkPartTwo = minimum . expensiveFuelCosts
+    }

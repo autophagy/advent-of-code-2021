@@ -1,9 +1,11 @@
-module Solutions.Day21 (partOne, partTwo) where
+module Solutions.Day21 (solution) where
 
 import Solution
 
-partOne :: Solution
-partOne = error "Unimplemented"
-
-partTwo :: Solution
-partTwo = error "Unimplemented"
+solution :: Solution [Integer]
+solution =
+  MkSol
+    { mkParse = error "Unimplemented",
+      mkPartOne = error "Unimplemented",
+      mkPartTwo = error "Unimplemented"
+    }

@@ -1,4 +1,4 @@
-module Solutions.Day4 (partOne, partTwo) where
+module Solutions.Day04 (solution) where
 
 import Common (contains, splitListBy, splitOn)
 import Data.List (transpose, (\\))
@@ -45,12 +45,16 @@ calculateLastWinner boards (x : xs) soFar =
     a -> calculateLastWinner (boards \\ a) xs (x : soFar)
 calculateLastWinner _ [] _ = -1
 
-partOne :: Solution
-partOne s = calculateFirstWinner b n []
-  where
-    (n, b) = readInput s
+partOne :: [Int] -> [BingoBoard] -> Int
+partOne n b = calculateFirstWinner b n []
 
-partTwo :: Solution
-partTwo s = calculateLastWinner b n []
-  where
-    (n, b) = readInput s
+partTwo :: [Int] -> [BingoBoard] -> Int
+partTwo n b = calculateLastWinner b n []
+
+solution :: Solution ([Int], [BingoBoard])
+solution =
+  MkSol
+    { mkParse = readInput,
+      mkPartOne = uncurry partOne,
+      mkPartTwo = uncurry partTwo
+    }

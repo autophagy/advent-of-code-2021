@@ -1,42 +1,48 @@
 import Test.Hspec
 
-import qualified Solutions.Day1 as Day1
-import qualified Solutions.Day2 as Day2
-import qualified Solutions.Day3 as Day3
-import qualified Solutions.Day4 as Day4
-import qualified Solutions.Day5 as Day5
-import qualified Solutions.Day6 as Day6
-import qualified Solutions.Day7 as Day7
+import Solution
+import qualified Solutions.Day01 as Day01
+import qualified Solutions.Day02 as Day02
+import qualified Solutions.Day03 as Day03
+import qualified Solutions.Day04 as Day04
+import qualified Solutions.Day05 as Day05
+import qualified Solutions.Day06 as Day06
+import qualified Solutions.Day07 as Day07
 
+runTest :: Solution a -> [String] -> (Int, Int)
+runTest = runWrappedSolution . MkWrappedSolution
 
 main :: IO ()
 main = hspec $ do
     describe "Day one" $ do
         let input = ["199", "200", "208", "210", "200", "207", "240", "269", "260", "263"]
+        let (partOne, partTwo) = runTest Day01.solution input
 
         it "returns the correct result for the part 1's example" $ do
-            Day1.partOne input `shouldBe` 7
+            partOne `shouldBe` 7
 
         it "returns the correct result for part 2's example" $ do
-            Day1.partTwo input `shouldBe` 5
+            partTwo `shouldBe` 5
 
     describe "Day two" $ do
         let input = [ "forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2" ]
+        let (partOne, partTwo) = runTest Day02.solution input
 
         it "returns the correct result for the part 1's example" $ do
-            Day2.partOne input `shouldBe` 150
+            partOne `shouldBe` 150
 
         it "returns the correct result for part 2's example" $ do
-            Day2.partTwo input `shouldBe` 900
+            partTwo `shouldBe` 900
 
     describe "Day three" $ do
         let input = ["00100", "11110", "10110", "10111", "10101", "01111", "00111", "11100", "10000", "11001", "00010", "01010"]
+        let (partOne, partTwo) = runTest Day03.solution input
 
         it "returns the correct result for the part 1's example" $ do
-            Day3.partOne input `shouldBe` 198
+            partOne `shouldBe` 198
 
         it "returns the correct result for part 2's example" $ do
-            Day3.partTwo input `shouldBe` 230
+            partTwo `shouldBe` 230
 
     describe "Day four" $ do
         let input = [ "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1"
@@ -58,13 +64,13 @@ main = hspec $ do
                     , "18  8 23 26 20"
                     , "22 11 13  6  5"
                     , " 2  0 12  3  7" ]
-
+        let (partOne, partTwo) = runTest Day04.solution input
 
         it "returns the correct result for the part 1's example" $ do
-            Day4.partOne input `shouldBe` 4512
+            partOne `shouldBe` 4512
 
         it "returns the correct result for part 2's example" $ do
-            Day4.partTwo input `shouldBe` 1924
+            partTwo `shouldBe` 1924
 
     describe "Day five" $ do
         let input = [ "0,9 -> 5,9"
@@ -77,27 +83,30 @@ main = hspec $ do
                     , "3,4 -> 1,4"
                     , "0,0 -> 8,8"
                     , "5,5 -> 8,2" ]
+        let (partOne, partTwo) = runTest Day05.solution input
 
         it "returns the correct result for part 1's example" $ do
-            Day5.partOne input `shouldBe` 5
+            partOne `shouldBe` 5
 
         it "returns the correct result for part 2's example" $ do
-            Day5.partTwo input `shouldBe` 12
+            partTwo `shouldBe` 12
 
     describe "Day six" $ do
         let input = ["3,4,3,1,2"]
+        let (partOne, partTwo) = runTest Day06.solution input
 
         it "returns the correct result for part 1's example" $ do
-            Day6.partOne input `shouldBe` 5934
+            partOne `shouldBe` 5934
 
         it "returns the correct result for part 2's example" $ do
-            Day6.partTwo input `shouldBe` 26984457539
+            partTwo `shouldBe` 26984457539
 
     describe "Day seven" $ do
         let input = ["16,1,2,0,4,2,7,1,2,14"]
+        let (partOne, partTwo) = runTest Day07.solution input
 
         it "returns the correct result for part 1's example" $ do
-            Day7.partOne input `shouldBe` 37
+            partOne `shouldBe` 37
 
         it "returns the correct result for part 2's example" $ do
-            Day7.partTwo input `shouldBe` 168
+            partTwo `shouldBe` 168

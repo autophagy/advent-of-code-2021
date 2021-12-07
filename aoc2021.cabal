@@ -25,8 +25,17 @@ source-repository head
 library
   exposed-modules:
       Common
+      Main
       Solution
-      Solutions.Day1
+      Solutions.Day01
+      Solutions.Day02
+      Solutions.Day03
+      Solutions.Day04
+      Solutions.Day05
+      Solutions.Day06
+      Solutions.Day07
+      Solutions.Day08
+      Solutions.Day09
       Solutions.Day10
       Solutions.Day11
       Solutions.Day12
@@ -37,20 +46,12 @@ library
       Solutions.Day17
       Solutions.Day18
       Solutions.Day19
-      Solutions.Day2
       Solutions.Day20
       Solutions.Day21
       Solutions.Day22
       Solutions.Day23
       Solutions.Day24
       Solutions.Day25
-      Solutions.Day3
-      Solutions.Day4
-      Solutions.Day5
-      Solutions.Day6
-      Solutions.Day7
-      Solutions.Day8
-      Solutions.Day9
   other-modules:
       Paths_aoc2021
   hs-source-dirs:
@@ -63,9 +64,36 @@ library
 executable aoc2021
   main-is: Main.hs
   other-modules:
+      Common
+      Solution
+      Solutions.Day01
+      Solutions.Day02
+      Solutions.Day03
+      Solutions.Day04
+      Solutions.Day05
+      Solutions.Day06
+      Solutions.Day07
+      Solutions.Day08
+      Solutions.Day09
+      Solutions.Day10
+      Solutions.Day11
+      Solutions.Day12
+      Solutions.Day13
+      Solutions.Day14
+      Solutions.Day15
+      Solutions.Day16
+      Solutions.Day17
+      Solutions.Day18
+      Solutions.Day19
+      Solutions.Day20
+      Solutions.Day21
+      Solutions.Day22
+      Solutions.Day23
+      Solutions.Day24
+      Solutions.Day25
       Paths_aoc2021
   hs-source-dirs:
-      app
+      src
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc2021

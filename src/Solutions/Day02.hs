@@ -1,4 +1,4 @@
-module Solutions.Day2 (partOne, partTwo) where
+module Solutions.Day02 (solution) where
 
 import Data.Maybe (mapMaybe)
 import Solution
@@ -30,8 +30,10 @@ adjustPositionB (Position horizontal depth aim) movement =
 finalDepth :: Position -> Int
 finalDepth (Position h d _) = h * d
 
-partOne :: Solution
-partOne = finalDepth . foldl adjustPositionA (Position 0 0 0) . mapMaybe (parseMovement . words)
-
-partTwo :: Solution
-partTwo = finalDepth . foldl adjustPositionB (Position 0 0 0) . mapMaybe (parseMovement . words)
+solution :: Solution [Movement]
+solution =
+  MkSol
+    { mkParse = mapMaybe (parseMovement . words),
+      mkPartOne = finalDepth . foldl adjustPositionA (Position 0 0 0),
+      mkPartTwo = finalDepth . foldl adjustPositionB (Position 0 0 0)
+    }
