@@ -1,6 +1,6 @@
 module Solutions.Day5 (partOne, partTwo) where
 
-import Common ((...), splitOn)
+import Common ((...), splitOn, absDifference)
 import Data.List (group, sort)
 import Solution
 
@@ -21,7 +21,7 @@ createLineDiag :: Coordinate -> Coordinate -> Line
 createLineDiag (Coordinate x1 y1) (Coordinate x2 y2)
   | x1 == x2 = map (Coordinate x1) $ y1...y2
   | y1 == y2 = map (`Coordinate` y1) $ x1...x2
-  | abs (x1 - x2) == abs (y1 - y2) = zipWith Coordinate (x1...x2) (y1...y2)
+  | absDifference x1 x2 == absDifference y1 y2 = zipWith Coordinate (x1...x2) (y1...y2)
   | otherwise = []
 
 parseInput :: [String] -> [(Coordinate, Coordinate)]

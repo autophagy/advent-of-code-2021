@@ -8,6 +8,7 @@ module Common
     (...),
     nthTriangle,
     fullRange,
+    absDifference,
   )
 where
 
@@ -64,3 +65,7 @@ nthTriangle n = div (n * n + n) 2
 -- | Given a list of elements, return the full list between its upper and lower bounds
 fullRange :: (Enum a, Ord a) => [a] -> [a]
 fullRange a = [minimum a .. maximum a]
+
+-- | Calculate the absolute difference between 2 numbers
+absDifference :: Num a => a -> a -> a
+absDifference a b = abs (a - b)
